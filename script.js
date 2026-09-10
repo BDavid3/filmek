@@ -107,7 +107,16 @@ for (const film of filmek) {
   tr.appendChild(tdTitle)
   tr.appendChild(tdYear)
   tr.appendChild(tdGenre)
-  tr.appendChild(tdRating)
 
+  if (film.rating < 3)
+  {
+    // change color
+    tdRating.className = "low-rating";
+    tr.appendChild(tdRating)
+  }
+  else
+  {
+    tr.appendChild(tdRating)
+  }
   table.appendChild(tr)
 }

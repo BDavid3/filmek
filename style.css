@@ -1,3 +1,4 @@
-th, td {
-  border-bottom: 1px solid #ddd;
+.low-rating {
+    color: red;
+    font-style: italic;
 }
