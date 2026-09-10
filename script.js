@@ -90,3 +90,24 @@ const filmek = [
     "rating": 5
   }
 ];
+
+const table = document.getElementById("tartalom")
+for (const film of filmek) {
+  const tr = document.createElement("tr")
+  const tdTitle = document.createElement("td")
+  const tdYear = document.createElement("td")
+  const tdGenre = document.createElement("td")
+  const tdRating = document.createElement("td")
+
+  tdTitle.innerText = film.title
+  tdYear.innerText = film.year
+  tdGenre.innerText = film.genre
+  tdRating.innerText = film.rating
+
+  tr.appendChild(tdTitle)
+  tr.appendChild(tdYear)
+  tr.appendChild(tdGenre)
+  tr.appendChild(tdRating)
+
+  table.appendChild(tr)
+}
