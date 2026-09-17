@@ -91,31 +91,65 @@ const filmek = [
   }
 ];
 
+// Body
 const table = document.getElementById("tartalom")
-for (const film of filmek) {
-  const tr = document.createElement("tr")
-  const tdTitle = document.createElement("td")
-  const tdYear = document.createElement("td")
-  const tdGenre = document.createElement("td")
-  const tdRating = document.createElement("td")
 
-  tdTitle.innerText = film.title
-  tdYear.innerText = film.year
-  tdGenre.innerText = film.genre
+function renderTable() {
+  table.innerHTML = ""
 
-  for (let index = 0; index < film.rating; index++) {
-    tdRating.innerText += "⭐";
-  } 
+  for (const film of filmek) {
+    const tr = document.createElement("tr")
+    const tdTitle = document.createElement("td")
+    const tdYear = document.createElement("td")
+    const tdGenre = document.createElement("td")
+    const tdRating = document.createElement("td")
 
-  tr.appendChild(tdTitle)
-  tr.appendChild(tdYear)
-  tr.appendChild(tdGenre)
+    tdTitle.innerText = film.title
+    tdYear.innerText = film.year
+    tdGenre.innerText = film.genre
+    tdRating.innerText = ""
 
-  if (film.rating < 3)
-  {
-    tdRating.className = "low-rating";
+    for (let index = 0; index < film.rating; index++) {
+      tdRating.innerText += "⭐";
+    }
+
+    tr.appendChild(tdTitle)
+    tr.appendChild(tdYear)
+    tr.appendChild(tdGenre)
+
+    if (film.rating < 3)
+    {
+      tdRating.className = "low-rating";
+    }
+    tr.appendChild(tdRating)
+
+    table.appendChild(tr)
   }
-  tr.appendChild(tdRating)
-  
-  table.appendChild(tr)
 }
+
+renderTable()
+
+// Urlap
+
+const form = document.getElementById("form-id")
+const titleInput = document.getElementById("input-title")
+const ratingInput = document.getElementById("input-number")
+const yearInput = document.getElementById("year-id")
+const genreInput = document.getElementById("genre-title")
+
+function addFilm(event) {
+  event.preventDefault()
+
+  const newFilm = {
+    title: titleInput.value,
+    year: Number(yearInput.value),
+    genre: genreInput.value,
+    rating: Number(ratingInput.value)
+  }
+
+  filmek.push(newFilm)
+  renderTable()
+  form.reset()
+}
+
+form.addEventListener("submit", addFilm)
