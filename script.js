@@ -102,7 +102,10 @@ for (const film of filmek) {
   tdTitle.innerText = film.title
   tdYear.innerText = film.year
   tdGenre.innerText = film.genre
-  tdRating.innerText = film.rating
+
+  for (let index = 0; index < film.rating; index++) {
+    tdRating.innerText += "⭐";
+  } 
 
   tr.appendChild(tdTitle)
   tr.appendChild(tdYear)
