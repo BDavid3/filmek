@@ -110,13 +110,9 @@ for (const film of filmek) {
 
   if (film.rating < 3)
   {
-    // change color
     tdRating.className = "low-rating";
-    tr.appendChild(tdRating)
   }
-  else
-  {
-    tr.appendChild(tdRating)
-  }
+  tr.appendChild(tdRating)
+  
   table.appendChild(tr)
 }
